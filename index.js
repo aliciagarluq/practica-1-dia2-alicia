@@ -1,5 +1,5 @@
 // CONTENIDO DE LA PRÁCTICA:
-// Vamos a añadir elementos en una lista (con la clase "color-list") con javascript a partir del array aportado en este documento, en la constante "colorList" (ver imagen en el proyecto "ejemplo_lista.png"). 
+// Vamos a añadir elementos en una lista (con la clase "color-list") con javascript a partir del array aportado en este documento, en la constante "colorList" (ver imagen en el proyecto "ejemplo_lista.png").
 
 // Como se puede apreciar en la imagen, cada elemento que esté en una posición par de de la lista tiene que tener la clase "color-item--odd". Esta clase debe añadirse desde javascript, NO haciendo uso del selector css nth-of-type(odd) o similares. NOTA: En este caso vamos a considerar un elemento par pensando en el primer elemento como el 1 no como el 0.
 
@@ -27,85 +27,79 @@
 // Buena suerte!
 const colorList = [
   {
-    colorName: 'white',
-    hex: '#ffffff'
+    colorName: "white",
+    hex: "#ffffff"
   },
   {
-    colorName: 'red',
-    hex: '#ff0000'
+    colorName: "red",
+    hex: "#ff0000"
   },
   {
-    colorName: 'orange',
-    hex: '#ffa500'
+    colorName: "orange",
+    hex: "#ffa500"
   },
   {
-    colorName: 'yellow',
-    hex: '#ffff00'
+    colorName: "yellow",
+    hex: "#ffff00"
   },
   {
-    colorName: 'orchid',
-    hex: '#da70d6'
+    colorName: "orchid",
+    hex: "#da70d6"
   },
   {
-    colorName: 'pink',
-    hex: '#ffc0cb'
+    colorName: "pink",
+    hex: "#ffc0cb"
   },
   {
-    colorName: 'green',
-    hex: '#008000'
+    colorName: "green",
+    hex: "#008000"
   },
   {
-    colorName: 'silver',
-    hex: '#c0c0c0'
+    colorName: "silver",
+    hex: "#c0c0c0"
   }
 ];
 //ul
 const listParent = document.querySelector("ul");
 
 //guardamos los li dentro del padre
-for(let i=0;i<colorList.length;i++){
-  let li=document.createElement("li");
+for (let i = 0; i < colorList.length; i++) {
+  let li = document.createElement("li");
   listParent.appendChild(li);
 }
 
 //lista de li
-let li_list=document.querySelectorAll("li");
+let li_list = document.querySelectorAll("li");
 
-//el contenido a cada li 
-for(let i=1;i<li_list.length;i++){
-
-  //creamos el div 1 
-  let d_child1=document.createElement("div");
+//el contenido a cada li
+for (let i = 1; i < li_list.length; i++) {
+  //creamos el div 1
+  let d_child1 = document.createElement("div");
   //texto del div
-  let t_child1=document.createTextNode("color: "+ colorList[i - 1].colorName);
+  let t_child1 = document.createTextNode(
+    "color: " + colorList[i - 1].colorName
+  );
   d_child1.appendChild(t_child1);
   d_child1.classList.add("color-name");
 
   //creamos el div 2
-  let d_child2=document.createElement("div")
+  let d_child2 = document.createElement("div");
   //texto del div
-  let t_child2=document.createTextNode("Muestra");
+  let t_child2 = document.createTextNode("Muestra");
   d_child2.appendChild(t_child2);
-  d_child2.classList.add("color-show")
-  
+  d_child2.classList.add("color-show");
 
   //creamos el button 1
-  let b_child3=document.createElement("button")
+  let b_child3 = document.createElement("button");
   //texto del button
-  let t_child3=document.createTextNode("Next item color");
+  let t_child3 = document.createTextNode("Next item color");
   b_child3.appendChild(t_child3);
   b_child3.classList.add("color-set");
-  /*let atr=document.createAttribute("color",colorList[i -1].hex)
-
-  b_child3.classList.add(colorList[i -1].hex);
-  console.log(b_child3)*/
- 
-
 
   //creamos el button 2
-  let b_child4=document.createElement("button")
+  let b_child4 = document.createElement("button");
   //texto del button
-  let t_child4=document.createTextNode("Page color");
+  let t_child4 = document.createTextNode("Page color");
   b_child4.appendChild(t_child4);
   b_child4.classList.add("color-set");
 
@@ -113,29 +107,19 @@ for(let i=1;i<li_list.length;i++){
   li_list[i].append(d_child2);
   li_list[i].append(b_child3);
   li_list[i].append(b_child4);
-  if(i%2==0){
+
+  //par o impar
+  if (i % 2 == 0) {
     li_list[i].classList.add("color-item--odd");
-  }else{
+  } else {
     li_list[i].classList.add("color-item");
   }
+  b_child3.addEventListener("click", function() {
+    li_list[i + 1].style.backgroundColor = colorList[i].hex;
+  });
 }
-  /*for(let i=0;i<li_list.length;i+2){
-     li_list[i].classList.add("color-item--odd");
-  }*/
- /*li_list[1].classList.add("color-item");
- li_list[2].classList.add("color-item--odd");
- li_list[3].classList.add("color-item");
- li_list[4].classList.add("color-item--odd");
- li_list[5].classList.add("color-item");
- li_list[6].classList.add("color-item--odd");
- li_list[7].classList.add("color-item");
- li_list[8].classList.add("color-item--odd");*/
-
-console.log(li_list[1].classList)
 
 let b_colorShow = document.querySelectorAll("div.color-show");
-  for(let i=0;i<b_colorShow.length;i++){
-    b_colorShow[i].style.backgroundColor=colorList[i].hex;
-  }
-
-console.log(b_colorShow[0])
+for (let j = 1; j < b_colorShow.length; j++) {
+  b_colorShow[j].style.backgroundColor = colorList[j].hex;
+}

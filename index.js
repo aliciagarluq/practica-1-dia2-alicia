@@ -60,3 +60,76 @@ const colorList = [
     hex: '#c0c0c0'
   }
 ];
+//ul
+const listParent = document.querySelector("ul");
+
+//guardamos los li dentro del padre
+for(let i=0;i<colorList.length;i++){
+  let li=document.createElement("li");
+  listParent.appendChild(li);
+}
+
+//lista de li
+let li_list=document.querySelectorAll("li");
+
+//el contenido a cada li 
+for(let i=1;i<li_list.length;i++){
+
+  //creamos el div 1 
+  let d_child1=document.createElement("div");
+  //texto del div
+  let t_child1=document.createTextNode("color: "+ colorList[i - 1].colorName);
+  d_child1.appendChild(t_child1);
+  d_child1.classList.add("color-name");
+
+  //creamos el div 2
+  let d_child2=document.createElement("div")
+  //texto del div
+  let t_child2=document.createTextNode("Muestra");
+  d_child2.appendChild(t_child2);
+  d_child2.classList.add("color-show")
+  
+
+  //creamos el button 1
+  let b_child3=document.createElement("button")
+  //texto del button
+  let t_child3=document.createTextNode("Next item color");
+  b_child3.appendChild(t_child3);
+  b_child3.classList.add("color-set");
+  //let atr=document.createAttribute("color",colorList[i -1].hex);
+
+  //creamos el button 2
+  let b_child4=document.createElement("button")
+  //texto del button
+  let t_child4=document.createTextNode("Page color");
+  b_child4.appendChild(t_child4);
+  b_child4.classList.add("color-set");
+
+  li_list[i].append(d_child1);
+  li_list[i].append(d_child2);
+  li_list[i].append(b_child3);
+  li_list[i].append(b_child4);
+  
+  let b_colorShow = document.querySelectorAll("div.color-show");
+  /*b_child3.classList.add(colorList[i -1].hex);*/
+  console.log("ey"+b_colorShow)
+
+}
+ li_list[1].classList.add("color-item");
+ li_list[2].classList.add("color-item--odd");
+ li_list[3].classList.add("color-item");
+ li_list[4].classList.add("color-item--odd");
+ li_list[5].classList.add("color-item");
+ li_list[6].classList.add("color-item--odd");
+ li_list[7].classList.add("color-item");
+ li_list[8].classList.add("color-item--odd");
+
+
+console.log(li_list[1].classList)
+/*
+let b_colorShow = document.querySelectorAll("div.color-show");
+  for(let i=0;i<b_colorShow.length;i++){
+    b_colorShow[i].style.backgroundColor=colorList[i].hex;
+  }*/
+
+//console.log(b_colorShow[0])

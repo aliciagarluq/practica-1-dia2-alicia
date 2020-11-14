@@ -25,7 +25,6 @@
 //    * Al hacer click sobre el botón con el texto "Page color" deberá aplicarse el color de ese item al color de fondo de la página (elemento body).
 
 // Buena suerte!
-
 const colorList = [
   {
     colorName: 'white',
@@ -96,7 +95,12 @@ for(let i=1;i<li_list.length;i++){
   let t_child3=document.createTextNode("Next item color");
   b_child3.appendChild(t_child3);
   b_child3.classList.add("color-set");
-  //let atr=document.createAttribute("color",colorList[i -1].hex);
+  /*let atr=document.createAttribute("color",colorList[i -1].hex)
+
+  b_child3.classList.add(colorList[i -1].hex);
+  console.log(b_child3)*/
+ 
+
 
   //creamos el button 2
   let b_child4=document.createElement("button")
@@ -109,12 +113,11 @@ for(let i=1;i<li_list.length;i++){
   li_list[i].append(d_child2);
   li_list[i].append(b_child3);
   li_list[i].append(b_child4);
-  
-  let b_colorShow = document.querySelectorAll("div.color-show");
-  /*b_child3.classList.add(colorList[i -1].hex);*/
-  console.log("ey"+b_colorShow)
 
 }
+  /*for(let i=0;i<li_list.length;i+2){
+     li_list[i].classList.add("color-item--odd");
+  }*/
  li_list[1].classList.add("color-item");
  li_list[2].classList.add("color-item--odd");
  li_list[3].classList.add("color-item");
@@ -124,12 +127,16 @@ for(let i=1;i<li_list.length;i++){
  li_list[7].classList.add("color-item");
  li_list[8].classList.add("color-item--odd");
 
-
 console.log(li_list[1].classList)
-/*
+
+
+
+
+
+
 let b_colorShow = document.querySelectorAll("div.color-show");
   for(let i=0;i<b_colorShow.length;i++){
     b_colorShow[i].style.backgroundColor=colorList[i].hex;
-  }*/
+  }
 
-//console.log(b_colorShow[0])
+console.log(b_colorShow[0])

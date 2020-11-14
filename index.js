@@ -59,23 +59,23 @@ const colorList = [
     hex: "#c0c0c0"
   }
 ];
-//ul
+//accedemos a ul (la lista)
 const listParent = document.querySelector("ul");
 
 //guardamos los li dentro del padre
 for (let i = 0; i < colorList.length; i++) {
-  let li = document.createElement("li");
-  listParent.appendChild(li);
+  let li = document.createElement("li"); //creamos el li
+  listParent.appendChild(li); //lo añadimos al ul
 }
 
 //lista de li
 let li_list = document.querySelectorAll("li");
 
-//el contenido a cada li
+//añadir el contenido a cada li
 for (let i = 1; i < li_list.length; i++) {
   //creamos el div 1
   let d_child1 = document.createElement("div");
-  //texto del div
+  //texto del div 1
   let t_child1 = document.createTextNode(
     "color: " + colorList[i - 1].colorName
   );
@@ -84,41 +84,49 @@ for (let i = 1; i < li_list.length; i++) {
 
   //creamos el div 2
   let d_child2 = document.createElement("div");
-  //texto del div
+  //texto del div 2
   let t_child2 = document.createTextNode("Muestra");
   d_child2.appendChild(t_child2);
   d_child2.classList.add("color-show");
 
   //creamos el button 1
   let b_child3 = document.createElement("button");
-  //texto del button
+  //texto del button 1
   let t_child3 = document.createTextNode("Next item color");
   b_child3.appendChild(t_child3);
   b_child3.classList.add("color-set");
 
   //creamos el button 2
   let b_child4 = document.createElement("button");
-  //texto del button
+  //texto del button 2
   let t_child4 = document.createTextNode("Page color");
   b_child4.appendChild(t_child4);
   b_child4.classList.add("color-set");
 
+  //añadimos los hijos de cada li a su li
   li_list[i].append(d_child1);
   li_list[i].append(d_child2);
   li_list[i].append(b_child3);
   li_list[i].append(b_child4);
 
-  //par o impar
+  //depende de si es par o impar ponemos una clase u otra
   if (i % 2 == 0) {
     li_list[i].classList.add("color-item--odd");
   } else {
     li_list[i].classList.add("color-item");
   }
+  //añadimos funcionalidad de cambiar el siguiente color de fondo del li
   b_child3.addEventListener("click", function() {
-    li_list[i + 1].style.backgroundColor = colorList[i].hex;
+    li_list[i + 1].style.backgroundColor = colorList[i - 1].hex;
+  });
+  let body = document.body;
+  //Un botón que modifica el color del fondo de la página.
+  b_child4.addEventListener("click", function() {
+    body.style.backgroundColor = colorList[i - 1].hex;
   });
 }
 
+//añadimos el color de los primeros botones para ver la muestra
 let b_colorShow = document.querySelectorAll("div.color-show");
 for (let j = 1; j < b_colorShow.length; j++) {
   b_colorShow[j].style.backgroundColor = colorList[j].hex;

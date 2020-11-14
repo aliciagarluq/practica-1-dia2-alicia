@@ -129,11 +129,6 @@ for(let i=1;i<li_list.length;i++){
 
 console.log(li_list[1].classList)
 
-
-
-
-
-
 let b_colorShow = document.querySelectorAll("div.color-show");
   for(let i=0;i<b_colorShow.length;i++){
     b_colorShow[i].style.backgroundColor=colorList[i].hex;

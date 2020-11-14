@@ -60,7 +60,7 @@ const colorList = [{
 ];
 
 //accedemos al body
-const body=document.body;
+const body = document.body;
 
 //accedemos a ul (la lista)
 const listParent = document.querySelector("ul");
@@ -111,12 +111,14 @@ for (let i = 1; i < li_list.length; i++) {
   li_list[i].append(b_child3);
   li_list[i].append(b_child4);
 
+
   //depende de si es par o impar ponemos una clase u otra
-  if (i % 2 == 0) {
+  i % 2 == 0 ? li_list[i].classList.add("color-item--odd") : li_list[i].classList.add("color-item");
+  /*if (i % 2 == 0) {
     li_list[i].classList.add("color-item--odd");
   } else {
     li_list[i].classList.add("color-item");
-  }
+  }*/
 
   //añadimos el color de los primeros botones para ver la muestra
   let b_colorShow = document.querySelectorAll("div.color-show");
@@ -125,33 +127,35 @@ for (let i = 1; i < li_list.length; i++) {
   }
 
   /**FUNCIONALIDADES */
-/** * Al hacer click sobre el botón con el texto "Next item color" deberá 
- * aplicarse el color de ese item al color de fondo del siguiente item 
- * (el último item cambia al primero). */
-  b_child3.addEventListener("click", function () {
-    li_list[i + 1].style.backgroundColor = colorList[i-1].hex
+  /** * Al hacer click sobre el botón con el texto "Next item color" deberá 
+   * aplicarse el color de ese item al color de fondo del siguiente item 
+   * (el último item cambia al primero). */
+  b_child3.addEventListener("click", () => {
+    if (li_list[i].nextSibling == null) {
+      li_list[1].style.backgroundColor = colorList[7].hex;
+    } else {
+      li_list[i + 1].style.backgroundColor = colorList[i - 1].hex
+    }
   });
 
-/**  Al hacer click sobre el botón con el texto
- *  "Page color" deberá aplicarse el color de ese item al color de fondo de la página (elemento body). */
-    b_child4.addEventListener("click", function () {
-    body.style.backgroundColor = colorList[i-1].hex
+  /**  Al hacer click sobre el botón con el texto
+   *  "Page color" deberá aplicarse el color de ese item al color de fondo de la página (elemento body). */
+  b_child4.addEventListener("click", () => {
+    body.style.backgroundColor = colorList[i - 1].hex
   });
 
   /* * Al hacer click directamente sobre uno de los items de la lista
    (no en uno de sus botones) debe aparecer un "alert" en el que se indique
     el nombre de su color. */
-  li_list[i].addEventListener("click",sayColor,false);
-  function sayColor(e){
+  li_list[i].addEventListener("click", (e) => {
     e.stopPropagation();
     alert(colorList[i - 1].colorName);
-  }
-  
+  }, false);
+
 }
 
 /* Al hacer click directamente (no en un item o botón) sobre el fondo de la
  página (elemento body), debe aparecer un alert en el que aparezca la palabra "body".*/
 
-body.addEventListener("click",function(){
-  alert("BODY");
-});
+body.addEventListener("click", ()=> 
+  alert("BODY"));
